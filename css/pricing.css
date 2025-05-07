@@ -1,0 +1,60 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #141414;
+  color: #ffffff;
+}
+
+header {
+  background-color: #222;
+  padding: 1em;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+nav a {
+  color: #00c896;
+  text-decoration: none;
+}
+
+.pricing-table {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+  gap: 2em;
+}
+
+.plan {
+  background-color: #2a2a2a;
+  padding: 1.5em;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.plan h3 {
+  color: #00e5a0;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer {
+  background-color: #222;
+  text-align: center;
+  padding: 1em;
+  margin-top: 2em;
+}

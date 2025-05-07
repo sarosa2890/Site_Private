@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тарифы - LINK-SCUM</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .tariff-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 4rem auto;
+            flex-wrap: wrap;
+        }
+
+        .tariff-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            padding: 2rem;
+            border-radius: 20px;
+            width: 350px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .tariff-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tariff-title {
+            font-size: 1.5rem;
+            color: #23d5ab;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tariff-price {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .tariff-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .tariff-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .select-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(45deg, #e73c7e, #ee7752);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .payment-content {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .card-details {
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .tg-input {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 8px;
+        }
+
+        .confirm-button {
+            background: #23d5ab;
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-contact {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">LINK-SCUM</a>
+            <div class="nav-links">
+                <a href="pricing.html">Тарифы</a>
+                <a href="https://t.me/LinkScumSupport_bot" target="_blank">Поддержка</a>
+                <a href="https://t.me/kondor3869otzivi" target="_blank">Отзывы</a>
+            </div>
+        </nav>
+
+        <div class="tariff-container">
+            <!-- Тариф EXTRA SCAM LINK -->
+            <div class="tariff-card">
+                <h3 class="tariff-title">EXTRA SCAM LINK</h3>
+                <div class="tariff-price">749₽</div>
+                <div class="currency-note">или 1790G</div>
+                <ul class="tariff-features">
+                    <li>Обычный скам линк</li>
+                    <li>Полное обучение скаму</li>
+                    <li>Вход в приватный чат</li>
+                    <li>Ключ для регистрации</li>
+                    <li>Доступ навсегда</li>
+                    <li>Софт для Standoff 2</li>
+                    <li>Поддержка обновлений</li>
+                </ul>
+                <button class="select-button" onclick="selectPlan('extra')">Выбрать тариф</button>
+            </div>
+
+            <!-- Тариф Навсегда -->
+            <div class="tariff-card">
+                <h3 class="tariff-title">Доступ навсегда</h3>
+                <div class="tariff-price">599₽</div>
+                <div class="currency-note">или 1499G</div>
+                <ul class="tariff-features">
+                    <li>Ключ для регистрации</li>
+                    <li>Полный доступ</li>
+                    <li>Софт для Standoff 2</li>
+                    <li>Обновления навсегда</li>
+                    <li>Приватный чат</li>
+                </ul>
+                <button class="select-button" onclick="selectPlan('forever')">Выбрать тариф</button>
+            </div>
+        </div>
+
+        <!-- Модальное окно оплаты -->
+        <div id="paymentModal" class="payment-modal">
+            <div class="payment-content">
+                <h2>💳 Оплата картой</h2>
+                
+                <div class="card-details">
+                    <p>Номер карты: <strong>2204 3206 6268 6106</strong></p>
+                    <p>Сумма оплаты:</p>
+                    <ul>
+                        <li>EXTRA SCAM LINK - 749₽</li>
+                        <li>Навсегда - 599₽</li>
+                    </ul>
+                </div>
+
+                <input type="text" 
+                       class="tg-input" 
+                       placeholder="Ваш @username в Telegram">
+
+                <button class="confirm-button" onclick="submitPayment()">
+                    Я оплатил ✅
+                </button>
+
+                <div class="admin-contact">
+                    <p>Другие способы недоступны 😢 (чтобы купить через другие способы оплаты напишите админу📧, и ОБЯЗАТЕЛЬНО прочитайте правила⚠️)</p>
+                    <a href="https://t.me/linkscum0" 
+                       target="_blank"
+                       class="select-button"
+                       style="margin-top:1rem; display:inline-block; width:auto;">
+                       📨 Написать админу
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectPlan(plan) {
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function submitPayment() {
+            const username = document.querySelector('.tg-input').value;
+            if(!username) {
+                alert('Введите ваш Telegram username!');
+                return;
+            }
+            alert(`✅ Запрос отправлен! Админ свяжется с @${username} в течение 15 минут`);
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if(event.target.className === 'payment-modal') {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
